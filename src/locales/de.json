@@ -1,0 +1,98 @@
+{
+  "settings": {
+    "language": "Sprache",
+    "saveslot": "Speicher-Slot",
+    "slot": "Slot",
+    "migrationInfo": "Alte Daten wurden beim ersten Start automatisch in Slot 1 verschoben.",
+    "deleteSave": "Speicher löschen",
+    "deleteSaveInfo": "Sind Sie sicher, dass Sie diesen Speicher löschen möchten?",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "deleteSuccess": "Speicher erfolgreich gelöscht.",
+    "deleteError": "Fehler beim Löschen des Speichers.",
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Speicher löschen möchten?",
+    "deletePlaceholder": "Geben Sie 'Löschen' ein, um zu bestätigen",
+    "deleteConfirmError": "Fehler beim Löschen des Speichers.",
+    "deleteConfirmSuccess": "Speicher erfolgreich gelöscht.",
+    "deleteNow": "Jetzt löschen"
+  },
+  "order": {
+    "title": "Bestellung",
+    "amount": "Anzahl",
+    "value": "Wert",
+    "sum": "Betrag",
+    "total": "Gesamt:"
+  },
+  "app": {
+    "title": "Auftragsbuch",
+    "newOrder": "Neue Bestellung",
+    "cart": "Warenkorb",
+    "completeOrder": "Auftrag abschließen",
+    "close": "Schließen",
+    "inventory": "Inventar",
+    "history": "Verlauf",
+    "all": "Alles",
+    "settings": "Einstellungen"
+  },
+  "booksHistory": {
+    "date": "Datum",
+    "currencies": "Währungen",
+    "amount": "Betrag",
+    "amountDollar": "Betrag ($)",
+    "empty": "Keine Aufträge vorhanden.",
+    "details": "Auftragsdetails"
+  },
+  "moneyType": {
+    "Echt": "Echt",
+    "Markiert": "Markiert",
+    "Falsch": "Falsch",
+    "Eingefärbt": "Eingefärbt"
+  },
+  "markedType": {
+    "unsorted": "Unsortiert",
+    "gang_diamond": "Gang (♦)",
+    "gang_plus": "Gang (+)",
+    "gang_striped": "Gang (≡)",
+    "police_x": "Polizei (X)",
+    "fdi_eye": "FDI (Auge)",
+    "blood": "Blut"
+  },
+  "currency": {
+    "Dollar": "Dollar",
+    "Euro": "Euro",
+    "Yen": "Yen"
+  },
+  "denomination": {
+    "10 $": "10 $",
+    "20 $": "20 $",
+    "50 $": "50 $",
+    "100 $": "100 $",
+    "20 €": "20 €",
+    "50 €": "50 €",
+    "100 €": "100 €",
+    "1000 ¥": "1000 ¥",
+    "5000 ¥": "5000 ¥",
+    "10000 ¥": "10000 ¥",
+    "1": {"000 ¥": "1,000 ¥"},
+    "5": {"000 ¥": "5,000 ¥"},
+    "10": {"000 ¥": "10,000 ¥"}
+  },
+  "keypad": {
+    "delete": "⌫",
+    "plus": "+",
+    "minus": "-"
+  },
+  "modal": {
+    "cart": "Warenkorb",
+    "completeOrder": "Auftrag abschließen",
+    "close": "Schließen"
+  },
+  "inventory": {
+    "title": "Inventar",
+    "empty": "Kein Eintrag für diese Auswahl.",
+    "total": "Gesamt:",
+    "amount": "Anzahl",
+    "value": "Wert",
+    "sum": "Betrag"
+  }
+}
