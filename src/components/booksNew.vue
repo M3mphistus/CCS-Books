@@ -200,14 +200,36 @@ function getInventarKey() {
   return `inventar_slot${globalState.saveSlot}`
 }
 
-function loadInventory() {
-  const inv = localStorage.getItem(getInventarKey())
-  if (inv) return JSON.parse(inv)
-  return {}
+
+async function loadInventory() {
+  // Electron Desktop: nutze window.ccsAPI
+  if (typeof window !== 'undefined' && window.ccsAPI && window.ccsAPI.readInventory) {
+    try {
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      const data = await window.ccsAPI.readInventory(filename);
+      return data ? JSON.parse(data) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+  // Web: localStorage
+  const inv = localStorage.getItem(getInventarKey());
+  if (inv) return JSON.parse(inv);
+  return {};
 }
 
-function saveInventory() {
-  localStorage.setItem(getInventarKey(), JSON.stringify(inventory.value))
+async function saveInventory() {
+  const data = JSON.stringify(inventory.value);
+  // Electron Desktop
+  if (typeof window !== 'undefined' && window.ccsAPI && window.ccsAPI.writeInventory) {
+    try {
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      await window.ccsAPI.writeInventory(filename, data);
+    } catch (e) {}
+    return;
+  }
+  // Web: localStorage
+  localStorage.setItem(getInventarKey(), data);
 }
 
 // Wenn sich der Slot ändert, Inventar neu laden

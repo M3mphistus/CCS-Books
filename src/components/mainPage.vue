@@ -37,6 +37,12 @@ onMounted(() => {
     <router-link to="/inventory"><button class="big-btn">{{$t('inventory.title')}}</button></router-link>
     <router-link to="/settings"><button class="big-btn">{{$t('app.settings')}}</button></router-link>
   </div>
+  <!-- Ko-Fi Unterstützung Button -->
+  <div class="kofi-support">
+    <a href="https://ko-fi.com/m3mphistus" target="_blank" rel="noopener">
+      <img src="../assets/kofi.jpg" alt="Unterstütze mich auf Ko-Fi" class="kofi-btn" />
+    </a>
+  </div>
 </template>
 
 <style scoped>
@@ -60,5 +66,20 @@ onMounted(() => {
 }
 .big-btn:active {
   background: #2c8f6b;
+}
+.kofi-support {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.kofi-btn {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.kofi-btn:hover {
+  transform: scale(1.07);
 }
 </style>

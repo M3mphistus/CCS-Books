@@ -200,19 +200,56 @@ if (Capacitor.isNativePlatform()) {
 onMounted(loadInventory)
 watch(() => globalState.saveSlot, loadInventory)
 
+
 async function loadInventory() {
+  // Electron Desktop: nutze window.ccsAPI
+  if (typeof window !== 'undefined' && window.ccsAPI && window.ccsAPI.readInventory) {
+    try {
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      const data = await window.ccsAPI.readInventory(filename);
+      inventory.value = data ? JSON.parse(data) : {};
+    } catch (e) {
+      inventory.value = {};
+    }
+    return;
+  }
+  // Mobile (Capacitor)
   if (Capacitor.isNativePlatform() && Filesystem) {
     try {
-      const filename = `inventar_slot${globalState.saveSlot}.json`
-      const result = await Filesystem.readFile({ path: filename, directory: 'DATA' })
-      inventory.value = JSON.parse(result.data)
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      const result = await Filesystem.readFile({ path: filename, directory: 'DATA' });
+      inventory.value = JSON.parse(result.data);
     } catch (e) {
-      inventory.value = {}
+      inventory.value = {};
     }
-  } else {
-    const inv = localStorage.getItem(getInventarKey())
-    inventory.value = inv ? JSON.parse(inv) : {}
+    return;
   }
+  // Web: localStorage
+  const inv = localStorage.getItem(getInventarKey());
+  inventory.value = inv ? JSON.parse(inv) : {};
+}
+
+// Speichern des Inventars (für Electron und Web)
+async function saveInventory() {
+  const data = JSON.stringify(inventory.value);
+  // Electron Desktop
+  if (typeof window !== 'undefined' && window.ccsAPI && window.ccsAPI.writeInventory) {
+    try {
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      await window.ccsAPI.writeInventory(filename, data);
+    } catch (e) {}
+    return;
+  }
+  // Mobile (Capacitor)
+  if (Capacitor.isNativePlatform() && Filesystem) {
+    try {
+      const filename = `inventar_slot${globalState.saveSlot}.json`;
+      await Filesystem.writeFile({ path: filename, data, directory: 'DATA' });
+    } catch (e) {}
+    return;
+  }
+  // Web: localStorage
+  localStorage.setItem(getInventarKey(), data);
 }
 
 // Filtered Inventory
