@@ -19,7 +19,9 @@
     <div class="header-spacer"></div>
     <img src="/ccs.png" alt="CCS Logo" class="logo" @click="goHome" style="cursor:pointer"/>
   </header>
-  <router-view />
+  <div class="app-content">
+    <router-view />
+  </div>
 </template>
 
 <style scoped>
@@ -34,16 +36,23 @@
 .app-header {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 95%;
   align-items: center;
   justify-content: space-between;
   height: 56px;
   padding: 0 1rem;
   background: purple;
   border-bottom: 1px solid #eee;
-  position: sticky;
+  position: fixed;
+  left: 1.5%;
   top: 0;
   z-index: 10;
+}
+.app-content {
+  min-height: calc(100vh - 56px); /* 56px ist die Header-Höhe */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .back-btn {
   font-size: 2rem;
