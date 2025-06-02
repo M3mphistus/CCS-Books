@@ -4,8 +4,8 @@
     <div class="settings-section">
       <label for="lang-select">{{$t('settings.language')}}:</label>
       <select id="lang-select" v-model="$i18n.locale">
-        <option value="de">Deutsch</option>
-        <option value="en">English</option>
+        <option value="de">{{$t('settings.languageDeutsch')}}</option>
+        <option value="en">{{$t('settings.languageEnglish')}}</option>
       </select>
     </div>
     <div class="settings-section">

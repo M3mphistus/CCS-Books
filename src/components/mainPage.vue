@@ -96,4 +96,23 @@ onMounted(() => {
 .kofi-btn:hover {
   transform: scale(1.07);
 }
+.cart-info {
+  margin-top: 2rem;
+}
+.cart-button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  background: #35495e;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.cart-button:hover {
+  background: #42b883;
+}
 </style>

@@ -96,5 +96,8 @@
     "amount": "Amount",
     "value": "Value",
     "sum": "Sum"
+  },
+  "cart": {
+    "label": "Cart"
   }
 }

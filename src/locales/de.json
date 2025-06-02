@@ -94,5 +94,10 @@
     "amount": "Anzahl",
     "value": "Wert",
     "sum": "Betrag"
+  },
+  "languageDeutsch": "Deutsch",
+  "languageEnglish": "Englisch",
+  "cart": {
+    "label": "Warenkorb"
   }
 }

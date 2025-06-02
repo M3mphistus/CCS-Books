@@ -100,7 +100,7 @@
       class="cart-btn"
       @click="showCartModal = true"
     >
-      🛒 Warenkorb ({{ cart.length }})
+      🛒 {{$t('cart.label')}} ({{ cart.length }})
     </button>
 
     <!-- Modal für Warenkorb -->
