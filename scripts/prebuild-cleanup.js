@@ -47,19 +47,6 @@ const retryOperation = (operation, retries, delay) => {
   });
 };
 
-const cleanup = async () => {
-  const distPath = path.join(__dirname, '../dist/win-unpacked');
 
-  try {
-    if (fs.existsSync(distPath)) {
-      await retryOperation(() => {
-        fs.rmSync(distPath, { recursive: true, force: true });
-      }, 5, 1000); // Retry up to 5 times with a 1-second delay
-      console.log('Pre-build cleanup completed successfully.');
-    }
-  } catch (error) {
-    console.error('Error during pre-build cleanup:', error);
-  }
-};
 
 cleanup();

@@ -14,7 +14,9 @@
     "deletePlaceholder": "Type 'delete' to confirm",
     "deleteConfirmError": "Confirmation failed. Please type 'delete' to confirm.",
     "deleteConfirmSuccess": "Save deleted successfully.",
-    "deleteNow": "Delete Now"
+    "deleteNow": "Delete Now",
+    "languageDeutsch": "German",
+    "languageEnglish": "English"
   },
   "language": {
     "title": "Language",

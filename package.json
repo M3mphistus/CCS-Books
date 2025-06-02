@@ -34,8 +34,7 @@
     "preview": "vite preview",
     "electron": "electron electron.cjs",
     "electron:dev": "vite build && electron electron.cjs",
-    "electron:build": "vite build && electron-builder",
-    "prebuild": "node scripts/prebuild-cleanup.js"
+    "electron:build": "vite build && electron-builder"
   },
   "dependencies": {
     "@capacitor/cli": "^7.2.0",

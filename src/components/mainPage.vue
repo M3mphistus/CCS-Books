@@ -2,7 +2,6 @@
 // Migration von alten Daten (ohne Slot) nach Slot 1
 import { onMounted } from 'vue'
 import globalState from '../store.js'
-import { ipcRenderer } from 'electron';
 
 onMounted(() => {
   // Nur im Browser/LocalStorage-Modus
@@ -30,18 +29,7 @@ onMounted(() => {
     }
   } catch (e) {}
 
-  const migrateSaveFiles = () => {
-    ipcRenderer.invoke('migrate-save-files')
-      .then(() => {
-        console.log('Speicherdaten erfolgreich migriert.');
-      })
-      .catch((error) => {
-        console.error('Fehler bei der Migration der Speicherdaten:', error);
-      });
-  };
-
-  // Migration beim Start ausführen
-  migrateSaveFiles();
+  // Migration beim Start ausführen (entfernt)
 })
 </script>
 

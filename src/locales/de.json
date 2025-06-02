@@ -14,7 +14,9 @@
     "deletePlaceholder": "Geben Sie 'Löschen' ein, um zu bestätigen",
     "deleteConfirmError": "Fehler beim Löschen des Speichers.",
     "deleteConfirmSuccess": "Speicher erfolgreich gelöscht.",
-    "deleteNow": "Jetzt löschen"
+    "deleteNow": "Jetzt löschen",
+    "languageDeutsch": "Deutsch",
+    "languageEnglish": "Englisch"
   },
   "order": {
     "title": "Bestellung",
@@ -95,8 +97,6 @@
     "value": "Wert",
     "sum": "Betrag"
   },
-  "languageDeutsch": "Deutsch",
-  "languageEnglish": "Englisch",
   "cart": {
     "label": "Warenkorb"
   }
