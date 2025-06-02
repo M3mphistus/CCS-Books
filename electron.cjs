@@ -19,6 +19,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  migrateSaveFiles(); // Migration ausführen
   createWindow();
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

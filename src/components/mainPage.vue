@@ -2,6 +2,8 @@
 // Migration von alten Daten (ohne Slot) nach Slot 1
 import { onMounted } from 'vue'
 import globalState from '../store.js'
+import fs from 'fs';
+import path from 'path';
 
 onMounted(() => {
   // Nur im Browser/LocalStorage-Modus
@@ -28,6 +30,54 @@ onMounted(() => {
       if (globalState.saveSlot !== 1) globalState.saveSlot = 1
     }
   } catch (e) {}
+
+  const getOldAppDataPath = () => {
+    return path.join(
+      process.env.APPDATA || process.env.HOME || process.env.USERPROFILE,
+      'local',
+      'ccs-books'
+    );
+  };
+
+  const getNewAppDataPath = () => {
+    return path.join(
+      process.env.USERPROFILE || process.env.HOME,
+      'Documents',
+      'CCS-Books'
+    );
+  };
+
+  const migrateSaveFiles = () => {
+    const oldPath = getOldAppDataPath();
+    const newPath = getNewAppDataPath();
+
+    try {
+      // Prüfen, ob der alte Speicherort existiert
+      if (fs.existsSync(oldPath)) {
+        // Sicherstellen, dass der neue Speicherort existiert
+        if (!fs.existsSync(newPath)) {
+          fs.mkdirSync(newPath, { recursive: true });
+        }
+
+        // Dateien aus dem alten Speicherort verschieben
+        const files = fs.readdirSync(oldPath);
+        files.forEach((file) => {
+          const oldFilePath = path.join(oldPath, file);
+          const newFilePath = path.join(newPath, file);
+
+          // Datei verschieben
+          fs.renameSync(oldFilePath, newFilePath);
+        });
+
+        console.log('Speicherdaten erfolgreich migriert.');
+      }
+    } catch (error) {
+      console.error('Fehler bei der Migration der Speicherdaten:', error);
+    }
+  };
+
+  // Migration beim Start ausführen
+  migrateSaveFiles();
 })
 </script>
 

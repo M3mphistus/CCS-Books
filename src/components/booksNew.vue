@@ -419,6 +419,39 @@ async function completeOrder() {
   cart.value = []
   showCartModal.value = false
 }
+
+const path = require('path')
+const getAppDataPath = () => {
+  return path.join(
+    process.env.USERPROFILE || process.env.HOME,
+    'Documents',
+    'CCS-Books'
+  );
+};
+
+ipcMain.handle('read-inventory', async (event, filename) => {
+  const dir = getAppDataPath();
+  const file = path.join(dir, filename);
+  try {
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    if (!fs.existsSync(file)) return '{}';
+    return fs.readFileSync(file, 'utf-8');
+  } catch (e) {
+    return '{}';
+  }
+});
+
+ipcMain.handle('write-inventory', async (event, filename, data) => {
+  const dir = getAppDataPath();
+  const file = path.join(dir, filename);
+  try {
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(file, data, 'utf-8');
+    return true;
+  } catch (e) {
+    return false;
+  }
+});
 </script>
 
 <style scoped>
