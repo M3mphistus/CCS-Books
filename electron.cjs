@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
 // __dirname ist in CommonJS automatisch verfügbar
 
@@ -60,5 +61,30 @@ ipcMain.handle('write-inventory', async (event, filename, data) => {
     return true;
   } catch (e) {
     return false;
+  }
+});
+
+ipcMain.handle('migrate-save-files', async () => {
+  try {
+    const oldPath = path.join(os.homedir(), 'AppData', 'Roaming', 'local', 'ccs-books');
+    const newPath = path.join(os.homedir(), 'Documents', 'CCS-Books');
+
+    if (fs.existsSync(oldPath)) {
+      if (!fs.existsSync(newPath)) {
+        fs.mkdirSync(newPath, { recursive: true });
+      }
+
+      const files = fs.readdirSync(oldPath);
+      for (const file of files) {
+        const oldFilePath = path.join(oldPath, file);
+        const newFilePath = path.join(newPath, file);
+        fs.renameSync(oldFilePath, newFilePath);
+      }
+
+      console.log('Speicherdaten erfolgreich migriert.');
+    }
+  } catch (error) {
+    console.error('Fehler bei der Migration der Speicherdaten:', error);
+    throw error;
   }
 });

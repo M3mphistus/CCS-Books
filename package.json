@@ -1,7 +1,7 @@
 {
   "name": "ccs",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "electron.cjs",
   "build": {
     "appId": "ccs.books",
@@ -34,12 +34,14 @@
     "preview": "vite preview",
     "electron": "electron electron.cjs",
     "electron:dev": "vite build && electron electron.cjs",
-    "electron:build": "vite build && electron-builder"
+    "electron:build": "vite build && electron-builder",
+    "prebuild": "node scripts/prebuild-cleanup.js"
   },
   "dependencies": {
     "@capacitor/cli": "^7.2.0",
     "@capacitor/core": "^7.2.0",
     "@capacitor/filesystem": "^7.1.1",
+    "fkill": "^9.0.0",
     "vue": "^3.5.13",
     "vue-i18n": "^9.14.4",
     "vue-router": "^4.5.1"
